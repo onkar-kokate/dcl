@@ -1,0 +1,55 @@
+✅ Step 1: Start Hadoop Services
+cd C:\hadoop-2.8.0\sbin
+start-dfs.cmd
+start-yarn.cmd
+
+This initializes:
+NameNode
+DataNode
+ResourceManager
+NodeManager
+
+✅ Step 2: Create a Directory in HDFS
+hdfs dfs -mkdir /sample
+
+✅ Step 3: Verify Directory Creation
+hdfs dfs -ls /
+
+Expected Output:
+Found 1 items
+drwxr-xr-x   - user supergroup          0 2025-04-21 14:30 /sample
+
+✅ Step 4: Copy File from Local to HDFS
+hdfs dfs -copyFromLocal D:\rally.txt /sample
+
+✅ Step 5: List Files in the Directory
+hdfs dfs -ls /sample
+
+Expected Output:
+Found 1 items
+-rw-r--r--   1 user supergroup       150 2025-04-21 14:32 /sample/rally.txt
+
+✅ Step 6: Display File Contents
+hdfs dfs -cat /sample/rally.txt
+
+Expected Output:
+[Contents of rally.txt displayed here]
+
+✅ Step 7: Copy File from HDFS to Local System
+hdfs dfs -copyToLocal /sample/rally.txt D:\rally_copy.txt
+
+✅ Step 8: Rename File in HDFS
+hdfs dfs -mv /sample/rally.txt /sample/rally_renamed.txt
+
+✅ Step 9: Remove File from HDFS
+hdfs dfs -rm /sample/rally_renamed.txt
+
+✅ Step 10: Delete Directory
+hdfs dfs -rmdir /sample
+Or use:
+hdfs dfs -rm -r /sample
+
+
+
+
+
